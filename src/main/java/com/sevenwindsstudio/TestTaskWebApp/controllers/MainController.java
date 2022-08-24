@@ -7,6 +7,7 @@ import com.sevenwindsstudio.TestTaskWebApp.util.PersonErrorResponse;
 import com.sevenwindsstudio.TestTaskWebApp.util.PersonNotCreatedException;
 import com.sevenwindsstudio.TestTaskWebApp.util.PersonNotFoundException;
 
+import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,12 +35,14 @@ public class MainController {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation("Get person from database")
     public PersonDTO getPerson(@PathVariable("id") int id) {
         return convertToPersonDTO(peopleService.findOne(id));
     }
 
     @PostMapping
-    public ResponseEntity<HttpStatus> createPerson (@RequestBody @Valid PersonDTO personDTO, BindingResult bindingResult) {
+    @ApiOperation("Save person to database")
+    public ResponseEntity<HttpStatus> createPerson(@RequestBody @Valid PersonDTO personDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
 
@@ -58,16 +61,16 @@ public class MainController {
     }
 
     @ExceptionHandler
-    private ResponseEntity<PersonErrorResponse> handleException (PersonNotFoundException e) {
+    private ResponseEntity<PersonErrorResponse> handleException(PersonNotFoundException e) {
         PersonErrorResponse response = new PersonErrorResponse(
-               "Person with this id wasn't found!", System.currentTimeMillis()
+                "Person with this id wasn't found!", System.currentTimeMillis()
         );
 
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
-    private ResponseEntity<PersonErrorResponse> handleException (PersonNotCreatedException e) {
+    private ResponseEntity<PersonErrorResponse> handleException(PersonNotCreatedException e) {
         PersonErrorResponse response = new PersonErrorResponse(
                 e.getMessage(), System.currentTimeMillis()
         );
@@ -79,7 +82,7 @@ public class MainController {
         return modelMapper.map(personDTO, Person.class);
     }
 
-    private PersonDTO convertToPersonDTO (Person person) {
+    private PersonDTO convertToPersonDTO(Person person) {
         return modelMapper.map(person, PersonDTO.class);
     }
 }
