@@ -20,7 +20,7 @@ public class Person {
     private String firstname;
 
     @NotEmpty(message = "Surname should not be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
+    @Size(min = 2, max = 30, message = "Surname should be between 2 and 30 characters")
     @Column(name = "surname")
     private String surname;
 
@@ -28,7 +28,7 @@ public class Person {
     private String patronymic;
 
     @Column(name = "email")
-    @Email
+    @Email (message = "Incorrect Email")
     @NotEmpty(message = "Email should not be empty")
     private String email;
 
