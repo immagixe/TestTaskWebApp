@@ -1,4 +1,4 @@
-create table people
+CREATE TABLE people
 (
     id           serial not null,
     email        varchar(255),
@@ -7,4 +7,4 @@ create table people
     phone_number varchar(255),
     surname      varchar(30),
     primary key (id)
-)
+);
