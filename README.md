@@ -7,7 +7,6 @@
 - В командной строке запустить команду "git clone https://github.com/immagixe/TestTaskWebApp"
 - После клонирования в папке TestTaskWebApp запустить скрипт **mvnw**
 - Перейти в папку target и запустить приложение при помощи команды "java -jar TestTaskWebApp-1.0.0-SNAPSHOT.jar"
-- После запуска приложения по адресу
 
 
 ## Описание веб-сервиса
