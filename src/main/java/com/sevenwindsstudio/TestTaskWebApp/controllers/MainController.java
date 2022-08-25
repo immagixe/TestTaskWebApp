@@ -3,9 +3,9 @@ package com.sevenwindsstudio.TestTaskWebApp.controllers;
 import com.sevenwindsstudio.TestTaskWebApp.dto.PersonDTO;
 import com.sevenwindsstudio.TestTaskWebApp.model.Person;
 import com.sevenwindsstudio.TestTaskWebApp.services.PeopleService;
-import com.sevenwindsstudio.TestTaskWebApp.util.PersonErrorResponse;
-import com.sevenwindsstudio.TestTaskWebApp.util.PersonNotCreatedException;
-import com.sevenwindsstudio.TestTaskWebApp.util.PersonNotFoundException;
+import com.sevenwindsstudio.TestTaskWebApp.dto.ErrorResponseDto;
+import com.sevenwindsstudio.TestTaskWebApp.exceptions.PersonNotCreatedException;
+import com.sevenwindsstudio.TestTaskWebApp.exceptions.PersonNotFoundException;
 
 import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
@@ -61,8 +61,8 @@ public class MainController {
     }
 
     @ExceptionHandler
-    private ResponseEntity<PersonErrorResponse> handleException(PersonNotFoundException e) {
-        PersonErrorResponse response = new PersonErrorResponse(
+    private ResponseEntity<ErrorResponseDto> handleException(PersonNotFoundException e) {
+        ErrorResponseDto response = new ErrorResponseDto(
                 "Person with this id wasn't found!", System.currentTimeMillis()
         );
 
@@ -70,8 +70,8 @@ public class MainController {
     }
 
     @ExceptionHandler
-    private ResponseEntity<PersonErrorResponse> handleException(PersonNotCreatedException e) {
-        PersonErrorResponse response = new PersonErrorResponse(
+    private ResponseEntity<ErrorResponseDto> handleException(PersonNotCreatedException e) {
+        ErrorResponseDto response = new ErrorResponseDto(
                 e.getMessage(), System.currentTimeMillis()
         );
 

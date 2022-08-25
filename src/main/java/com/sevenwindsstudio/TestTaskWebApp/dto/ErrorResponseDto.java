@@ -1,10 +1,10 @@
-package com.sevenwindsstudio.TestTaskWebApp.util;
+package com.sevenwindsstudio.TestTaskWebApp.dto;
 
-public class PersonErrorResponse {
+public class ErrorResponseDto {
     private String message;
     private long timestamp;
 
-    public PersonErrorResponse(String message, long timestamp) {
+    public ErrorResponseDto(String message, long timestamp) {
         this.message = message;
         this.timestamp = timestamp;
     }

@@ -2,7 +2,7 @@ package com.sevenwindsstudio.TestTaskWebApp.services;
 
 import com.sevenwindsstudio.TestTaskWebApp.model.Person;
 import com.sevenwindsstudio.TestTaskWebApp.repositories.PeopleRepository;
-import com.sevenwindsstudio.TestTaskWebApp.util.PersonNotFoundException;
+import com.sevenwindsstudio.TestTaskWebApp.exceptions.PersonNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

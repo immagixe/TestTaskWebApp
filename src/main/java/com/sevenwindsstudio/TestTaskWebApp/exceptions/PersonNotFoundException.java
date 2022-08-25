@@ -1,4 +1,4 @@
-package com.sevenwindsstudio.TestTaskWebApp.util;
+package com.sevenwindsstudio.TestTaskWebApp.exceptions;
 
 public class PersonNotFoundException extends RuntimeException{
 }
