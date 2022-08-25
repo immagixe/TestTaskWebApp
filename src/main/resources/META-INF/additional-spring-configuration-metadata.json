@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "flyway.user",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "flyway.password",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "flyway.schemas",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "flyway.url",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "flyway.locations",
+      "type": "java.lang.String"
+    }
+  ]
+}
