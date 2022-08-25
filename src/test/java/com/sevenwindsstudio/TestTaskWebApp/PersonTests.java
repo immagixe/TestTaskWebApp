@@ -1,23 +1,23 @@
 package com.sevenwindsstudio.TestTaskWebApp;
 
 import com.sevenwindsstudio.TestTaskWebApp.model.Person;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.validation.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.util.Set;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class PersonTest {
+public class PersonTests {
 
     private Person person;
 
-    @Before
+    @BeforeEach
     public void createNewPerson() {
         person = new Person();
     }
@@ -36,7 +36,7 @@ public class PersonTest {
 
         Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 
-        Assert.assertEquals(0, constraintViolations.size());
+        Assertions.assertEquals(0, constraintViolations.size());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class PersonTest {
 
         Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 
-        Assert.assertEquals(1, constraintViolations.size());
+        Assertions.assertEquals(1, constraintViolations.size());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class PersonTest {
 
         Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 
-        Assert.assertEquals(1, constraintViolations.size());
+        Assertions.assertEquals(1, constraintViolations.size());
     }
 
     @Test
@@ -86,6 +86,6 @@ public class PersonTest {
 
         Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 
-        Assert.assertEquals(1, constraintViolations.size());
+        Assertions.assertEquals(1, constraintViolations.size());
     }
 }
